@@ -1,0 +1,91 @@
+# TaskFlow
+
+## Descripción general
+
+TaskFlow es una API REST desarrollada con Spring Boot para la gestión de usuarios, tareas y notificaciones. El sistema permite registrar usuarios, autenticarlos mediante JWT, administrar tareas asociadas a cada cuenta y generar notificaciones automáticas relacionadas con eventos del sistema. La aplicación utiliza PostgreSQL como sistema de persistencia de datos y fue desplegada en Railway para su ejecución en entorno de producción.
+
+El proyecto fue desarrollado bajo una arquitectura por capas, siguiendo una separación clara entre controladores, servicios, repositorios, entidades, componentes de seguridad y objetos de transferencia de datos. Asimismo, incorpora pruebas unitarias y de controladores con cobertura total del código.
+
+---
+
+## Objetivo del proyecto
+
+El objetivo principal de TaskFlow es ofrecer una solución backend para la administración de tareas, incorporando mecanismos de autenticación, persistencia, notificaciones internas y pruebas automatizadas. El proyecto busca aplicar buenas prácticas de desarrollo de software en un entorno académico y técnico, incluyendo:
+
+- diseño estructurado por capas;
+- seguridad con JWT;
+- cifrado de contraseñas;
+- manejo de base de datos relacional;
+- pruebas automatizadas con cobertura completa;
+- despliegue en la nube.
+
+---
+
+## Tecnologías utilizadas
+
+Las principales tecnologías, herramientas y dependencias empleadas en el desarrollo del proyecto son las siguientes:
+
+- Java 17
+- Spring Boot
+- Spring Web MVC
+- Spring Data JPA
+- Spring Security
+- JSON Web Token (JWT)
+- PostgreSQL
+- Maven
+- JUnit 5
+- Mockito
+- Git y GitHub
+- Railway
+
+---
+
+## Arquitectura del sistema
+
+El proyecto fue estructurado bajo una arquitectura por capas con el fin de mantener una separación adecuada de responsabilidades y facilitar el mantenimiento del código.
+
+### Controladores (`controller`)
+Se encargan de recibir las solicitudes HTTP, invocar la lógica correspondiente en la capa de servicio y devolver respuestas estructuradas al cliente.
+
+### Servicios (`service`)
+Contienen la lógica de negocio principal del sistema. En esta capa se implementan las validaciones, reglas funcionales y automatizaciones de eventos.
+
+### Repositorios (`repository`)
+Permiten el acceso a la base de datos mediante Spring Data JPA.
+
+### Entidades (`entity`)
+Representan las tablas del modelo relacional en PostgreSQL.
+
+### Seguridad (`security`)
+Gestiona la autenticación y autorización mediante JWT, así como el cifrado de contraseñas con BCrypt.
+
+### DTO (`dto`)
+Permiten estructurar adecuadamente las solicitudes y respuestas, evitando exponer directamente entidades internas del sistema.
+
+### Manejo global de excepciones (`exception`)
+Centraliza el tratamiento de errores con respuestas consistentes y controladas.
+
+---
+
+## Estructura general del proyecto
+
+```text
+src
+ ├── main
+ │   ├── java/com/taskflow/taskflow
+ │   │   ├── controller
+ │   │   ├── dto
+ │   │   ├── entity
+ │   │   ├── exception
+ │   │   ├── repository
+ │   │   ├── security
+ │   │   └── service
+ │   └── resources
+ │       └── application.properties
+ └── test
+     └── java/com/taskflow/taskflow
+         ├── controller
+         ├── dto
+         ├── entity
+         ├── security
+         └── service
