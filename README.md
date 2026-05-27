@@ -89,3 +89,53 @@ src
          ├── entity
          ├── security
          └── service
+Funcionalidades implementadas
+1. Gestión de usuarios
+El sistema permite registrar e iniciar sesión de usuarios mediante los siguientes procesos:
+
+registro de nuevos usuarios;
+validación de correo duplicado;
+cifrado de la contraseña con BCrypt antes de almacenar el usuario;
+autenticación por correo y contraseña;
+generación de token JWT en el proceso de inicio de sesión;
+eliminación controlada de usuarios;
+restricción de eliminación cuando existen tareas asociadas;
+eliminación automática de notificaciones antes de eliminar el usuario, siempre que no existan tareas pendientes asociadas.
+
+2. Gestión de tareas
+El sistema permite realizar operaciones CRUD completas sobre tareas:
+
+creación de tareas;
+consulta de todas las tareas;
+consulta de tarea por identificador;
+actualización de tareas;
+eliminación de tareas.
+
+Cada tarea se encuentra asociada a un usuario específico.
+3. Gestión de notificaciones
+El sistema permite:
+
+crear notificaciones manuales;
+listar todas las notificaciones;
+listar notificaciones por usuario;
+generar notificaciones automáticas cuando ocurre alguno de los siguientes eventos:
+
+creación de cuenta;
+creación de tarea;
+actualización de tarea.
+
+
+
+
+Seguridad implementada
+La seguridad del sistema se desarrolló con Spring Security y JWT.
+Características principales
+
+cifrado de contraseñas mediante BCrypt;
+autenticación basada en token JWT;
+uso de filtro JWT para validar solicitudes protegidas;
+endpoints públicos para registro e inicio de sesión;
+endpoints protegidos para tareas y notificaciones.
+
+Endpoints públicos
+Los siguientes endpoints son accesibles sin token:
