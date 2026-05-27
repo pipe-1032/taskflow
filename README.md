@@ -89,53 +89,64 @@ src
          ├── entity
          ├── security
          └── service
-Funcionalidades implementadas
-1. Gestión de usuarios
-El sistema permite registrar e iniciar sesión de usuarios mediante los siguientes procesos:
 
-registro de nuevos usuarios;
-validación de correo duplicado;
-cifrado de la contraseña con BCrypt antes de almacenar el usuario;
-autenticación por correo y contraseña;
-generación de token JWT en el proceso de inicio de sesión;
-eliminación controlada de usuarios;
-restricción de eliminación cuando existen tareas asociadas;
-eliminación automática de notificaciones antes de eliminar el usuario, siempre que no existan tareas pendientes asociadas.
+## Funcionalidades implementadas
 
-2. Gestión de tareas
-El sistema permite realizar operaciones CRUD completas sobre tareas:
+El sistema desarrollado incorpora tres módulos funcionales principales: gestión de usuarios, gestión de tareas y gestión de notificaciones. Cada uno de estos módulos fue diseñado para cubrir necesidades básicas de una API orientada a la administración de actividades, con autenticación segura y eventos automáticos del sistema.
 
-creación de tareas;
-consulta de todas las tareas;
-consulta de tarea por identificador;
-actualización de tareas;
-eliminación de tareas.
+### Gestión de usuarios
 
-Cada tarea se encuentra asociada a un usuario específico.
-3. Gestión de notificaciones
-El sistema permite:
+El módulo de usuarios permite administrar el ciclo básico de autenticación y control de cuentas dentro de la aplicación. Entre las funcionalidades implementadas se encuentran las siguientes:
 
-crear notificaciones manuales;
-listar todas las notificaciones;
-listar notificaciones por usuario;
-generar notificaciones automáticas cuando ocurre alguno de los siguientes eventos:
+- registro de nuevos usuarios;
+- validación de correos duplicados;
+- cifrado de contraseñas mediante BCrypt antes de su almacenamiento;
+- autenticación por correo electrónico y contraseña;
+- generación de token JWT en el proceso de inicio de sesión;
+- eliminación controlada de usuarios;
+- restricción de eliminación cuando existen tareas asociadas al usuario;
+- eliminación automática de notificaciones antes de eliminar un usuario, siempre que no existan tareas vinculadas.
 
-creación de cuenta;
-creación de tarea;
-actualización de tarea.
+### Gestión de tareas
 
+El módulo de tareas permite realizar operaciones completas sobre las actividades registradas por los usuarios. Las funcionalidades desarrolladas son las siguientes:
 
+- creación de tareas;
+- consulta de todas las tareas registradas;
+- consulta de tareas por identificador;
+- actualización de tareas existentes;
+- eliminación de tareas;
+- asociación de cada tarea a un usuario específico.
 
+### Gestión de notificaciones
 
-Seguridad implementada
-La seguridad del sistema se desarrolló con Spring Security y JWT.
-Características principales
+El módulo de notificaciones permite tanto el registro manual como la generación automática de mensajes del sistema. Las funcionalidades principales son:
 
-cifrado de contraseñas mediante BCrypt;
-autenticación basada en token JWT;
-uso de filtro JWT para validar solicitudes protegidas;
-endpoints públicos para registro e inicio de sesión;
-endpoints protegidos para tareas y notificaciones.
+- creación manual de notificaciones;
+- consulta de todas las notificaciones registradas;
+- consulta de notificaciones por usuario;
+- generación automática de notificaciones al crear una cuenta;
+- generación automática de notificaciones al crear una tarea;
+- generación automática de notificaciones al actualizar una tarea.
 
-Endpoints públicos
-Los siguientes endpoints son accesibles sin token:
+---
+
+## Seguridad implementada
+
+La seguridad del sistema fue construida utilizando Spring Security y JSON Web Token (JWT). Con esta configuración se logró proteger las rutas sensibles de la aplicación y limitar el acceso a usuarios autenticados.
+
+### Características principales de seguridad
+
+- cifrado de contraseñas con BCrypt;
+- autenticación basada en tokens JWT;
+- filtro de validación JWT para proteger rutas restringidas;
+- separación entre endpoints públicos y privados;
+- protección de módulos de tareas y notificaciones.
+
+### Endpoints públicos
+
+Los endpoints públicos disponibles sin autenticación son los siguientes:
+
+```http
+POST /users/register
+POST /users/login
